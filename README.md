@@ -1,6 +1,6 @@
 ##GetWordTextView
 
-A TextView that can get every word in it's content by click,and you can set HighlightText also.
+A TextView that can get word in it's content by click,and you can set HighlightText also.
 (Support English and Chinese)
 
 ![](capture/capture.gif)
@@ -19,10 +19,10 @@ A TextView that can get every word in it's content by click,and you can set High
         app:language="English"
         app:selectedColor="@color/colorPrimary" />
 ```
-- <code>highlightText</code>:the HighlightText
-- <code>highlightColor</code>:your HighlightText'color
-- <code>selectedColor</code>:you clicked word's background
-- <code>language</code>:your content's language
+- <code>highlightText</code>:HighlightText
+- <code>highlightColor</code>:HighlightText'color
+- <code>selectedColor</code>:Clicked word's background
+- <code>language</code>:Content's language
 
 ###Set Text and Listener in your code
 ```html
