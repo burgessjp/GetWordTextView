@@ -3,6 +3,8 @@
 A TextView that can get every word in it's content by click,and you can set HighlightText also.
 (Support English and Chinese)
 
+![](capture/capture.gif)
+
 ##Usage
 
 ###Add GetWordTextView to your layout:
@@ -21,6 +23,22 @@ A TextView that can get every word in it's content by click,and you can set High
 - <code>highlightColor</code>:your HighlightText'color
 - <code>selectedColor</code>:you clicked word's background
 - <code>language</code>:your content's language
+
+###Set Text and Listener in your code
+```html
+        mEnglishGetWordTextView = (GetWordTextView) findViewById(R.id.english_get_word_text_view);
+        mEnglishGetWordTextView.setText("A view that can get every word inside,it's very helpful view!");
+        mEnglishGetWordTextView.setOnWordClickListener(new GetWordTextView.OnWordClickListener() {
+            @Override
+            public void onClick(String word) {
+                showToast(word);
+            }
+        });
+```
+
+
+##TODO
+Mixed support for English and Chinese
 
 
 ##Contact & Help
