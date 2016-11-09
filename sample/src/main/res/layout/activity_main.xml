@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="me.solidev.getwordtextview.MainActivity">
+
+    <me.solidev.library.GetWordTextView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/english_get_word_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        app:highlightColor="@color/colorAccent"
+        app:highlightText="that"
+        app:language="English"
+        app:selectedColor="@color/colorPrimary" />
+
+    <me.solidev.library.GetWordTextView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/chinese_get_word_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="16sp"
+        app:highlightColor="@color/colorAccent"
+        app:highlightText="中"
+        app:language="Chinese"
+        app:selectedColor="@color/colorPrimary" />
+
+    <Button
+        android:id="@+id/btn_dismiss_selected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="取消选中效果" />
+</LinearLayout>

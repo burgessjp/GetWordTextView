@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="GetWordTextView">
+        <attr name="highlightColor" format="reference|color" />
+        <attr name="highlightText" format="reference|string" />
+        <attr name="selectedColor" format="reference|color" />
+        <attr name="language">
+            <enum name="English" value="0" />
+            <enum name="Chinese" value="1" />
+        </attr>
+    </declare-styleable>
+</resources>
