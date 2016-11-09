@@ -1,10 +1,10 @@
 ##GetWordTextView
----
+
 A TextView that can get every word in it's content by click,and you can set HighlightText also.
 (Support English and Chinese)
 
 ##Usage
----
+
 ###Add GetWordTextView to your layout:
 ```html
   <me.solidev.library.GetWordTextView xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -25,9 +25,10 @@ A TextView that can get every word in it's content by click,and you can set High
 
 ##Contact & Help
 
-- email: jiapeng1818@163.com
-- weibo: http://weibo.com/xljiepeng
 - blog: http://www.jianshu.com/users/6725c8e8194f
+- weibo: http://weibo.com/xljiepeng
+- email: jiapeng1818@163.com
+
 
 ##License
 ```html
