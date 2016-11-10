@@ -89,25 +89,25 @@ public class GetWordTextView extends TextView {
     }
 
     private void dealChinese() {
-        //filter char(you can add more)
-        Character[] arr = new Character[]{',', '.', ';', '，', '。', '！', '；', '、', '：', '“', '”'};
-        List<Character> punctuations = Arrays.asList(arr);
-
         for (int i = 0; i < mText.length(); i++) {
             char ch = mText.charAt(i);
-            if (!punctuations.contains(ch)) {
+            if (Utils.isChinese(ch)) {
                 mSpannableString.setSpan(getClickableSpan(), i, i + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
         }
     }
 
     private void dealEnglish() {
-        List<Integer> wordIndices = getEnglishWordIndices();
+        List<Integer> wordIndices = Utils.getEnglishWordIndices(mText.toString());
         int start = 0;
         int end;
         int indexSize = wordIndices.size();
         for (int i = 0; i < indexSize + 1; i++) {
             end = (i == indexSize ? mText.length() : wordIndices.get(i));
+            if (start == end) {
+                start++;
+                continue;
+            }
             mSpannableString.setSpan(getClickableSpan(), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             start = end + 1;
             if (end == mText.length()) {
@@ -116,33 +116,6 @@ public class GetWordTextView extends TextView {
         }
     }
 
-    @NonNull
-    private List<Integer> getEnglishWordIndices() {
-        List<Integer> wordIndices = getWordIndices(mText.toString(), ' ');
-        wordIndices.addAll(getWordIndices(mText.toString(), ','));
-        wordIndices.addAll(getWordIndices(mText.toString(), '.'));
-        wordIndices.addAll(getWordIndices(mText.toString(), '!'));
-        wordIndices.addAll(getWordIndices(mText.toString(), ';'));
-        Collections.sort(wordIndices);
-        return wordIndices;
-    }
-
-    /**
-     * Get every word's index array of text
-     *
-     * @param text the content
-     * @param ch   separate char
-     * @return index array
-     */
-    private List<Integer> getWordIndices(String text, char ch) {
-        int pos = text.indexOf(ch);
-        List<Integer> indices = new ArrayList<>();
-        while (pos != -1) {
-            indices.add(pos);
-            pos = text.indexOf(ch, pos + 1);
-        }
-        return indices;
-    }
 
     private void setHighLightSpan(SpannableString spannableString) {
         if (TextUtils.isEmpty(highlightText)) {
