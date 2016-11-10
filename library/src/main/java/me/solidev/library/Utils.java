@@ -19,26 +19,37 @@ class Utils {
     private static List<Character> sPunctuations;
 
     static {
-        Character[] arr = new Character[]{',', '.', ';', '!', '，', '。', '！', '；', '、', '：', '“', '”'};
+        Character[] arr = new Character[]{',', '.', ';', '!', '"', '，', '。', '！', '；', '、', '：', '“', '”','?','？'};
         sPunctuations = Arrays.asList(arr);
     }
 
     static boolean isChinese(char ch) {
-
         return !sPunctuations.contains(ch);
-
-//        Pattern pattern = Pattern.compile("[\u0391-\uFFE5]+$");
-//        return pattern.matcher(ch).matches();
     }
 
     @NonNull
-    static List<Integer> getEnglishWordIndices(String word) {
-        List<Integer> wordIndices = getWordIndices(word, ' ');
+    static List<WordInfo> getEnglishWordIndices(String content) {
+        List<Integer> separatorIndices = getSeparatorIndices(content, ' ');
         for (Character punctuation : sPunctuations) {
-            wordIndices.addAll(getWordIndices(word, punctuation));
+            separatorIndices.addAll(getSeparatorIndices(content, punctuation));
         }
-        Collections.sort(wordIndices);
-        return wordIndices;
+        Collections.sort(separatorIndices);
+        List<WordInfo> wordInfoList = new ArrayList<>();
+        int start = 0;
+        int end;
+        for (int i = 0; i < separatorIndices.size(); i++) {
+            end = separatorIndices.get(i);
+            if (start == end) {
+                start++;
+            } else {
+                WordInfo wordInfo = new WordInfo();
+                wordInfo.setStart(start);
+                wordInfo.setEnd(end);
+                wordInfoList.add(wordInfo);
+                start = end + 1;
+            }
+        }
+        return wordInfoList;
     }
 
     /**
@@ -48,7 +59,7 @@ class Utils {
      * @param ch   separate char
      * @return index array
      */
-    private static List<Integer> getWordIndices(String word, char ch) {
+    private static List<Integer> getSeparatorIndices(String word, char ch) {
         int pos = word.indexOf(ch);
         List<Integer> indices = new ArrayList<>();
         while (pos != -1) {

@@ -17,7 +17,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mEnglishGetWordTextView = (GetWordTextView) findViewById(R.id.english_get_word_text_view);
-        mEnglishGetWordTextView.setText("A view that can get every word inside,it's very helpful view!");
+        //mEnglishGetWordTextView.setText("A view that can get every word inside,it's very helpful view!");
+         mEnglishGetWordTextView.setText("\"Oh, yes,\" she said, \"would you please show me how to use the TV?");
         mEnglishGetWordTextView.setOnWordClickListener(new GetWordTextView.OnWordClickListener() {
             @Override
             public void onClick(String word) {

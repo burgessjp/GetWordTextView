@@ -3,7 +3,6 @@ package me.solidev.library;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.support.annotation.NonNull;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
@@ -16,9 +15,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -98,21 +94,10 @@ public class GetWordTextView extends TextView {
     }
 
     private void dealEnglish() {
-        List<Integer> wordIndices = Utils.getEnglishWordIndices(mText.toString());
-        int start = 0;
-        int end;
-        int indexSize = wordIndices.size();
-        for (int i = 0; i < indexSize + 1; i++) {
-            end = (i == indexSize ? mText.length() : wordIndices.get(i));
-            if (start == end) {
-                start++;
-                continue;
-            }
-            mSpannableString.setSpan(getClickableSpan(), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            start = end + 1;
-            if (end == mText.length()) {
-                break;
-            }
+        List<WordInfo> wordInfoList = Utils.getEnglishWordIndices(mText.toString());
+        for (WordInfo wordInfo : wordInfoList) {
+            mSpannableString.setSpan(getClickableSpan(), wordInfo.getStart(), wordInfo.getEnd(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
         }
     }
 
