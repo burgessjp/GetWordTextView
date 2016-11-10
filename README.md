@@ -27,7 +27,7 @@ A TextView that can get every word in it's content by click,and you can set High
 
 - blog: http://www.jianshu.com/users/6725c8e8194f
 - weibo: http://weibo.com/xljiepeng
-- email: jiapeng1818@163.com
+- email: wy_jiapeng@163.com
 
 
 ##License
