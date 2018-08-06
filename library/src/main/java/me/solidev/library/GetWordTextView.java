@@ -26,7 +26,7 @@ import java.util.List;
  * </p>
  */
 
-public class GetWordTextView extends TextView {
+public class GetWordTextView extends android.support.v7.widget.AppCompatTextView {
 
     private CharSequence mText;
     private BufferType mBufferType;
@@ -138,10 +138,16 @@ public class GetWordTextView extends TextView {
             @Override
             public void onClick(View widget) {
                 TextView tv = (TextView) widget;
+                int startIndex = tv.getSelectionStart();
+                int endIndex = tv.getSelectionEnd();
+                if (TextUtils.isEmpty(getText()) || startIndex == -1 || endIndex == -1) {
+                    return;
+                }
+
                 String word = tv
                         .getText()
-                        .subSequence(tv.getSelectionStart(),
-                                tv.getSelectionEnd()).toString();
+                        .subSequence(startIndex,
+                                endIndex).toString();
                 setSelectedSpan(tv);
 
                 if (mOnWordClickListener != null) {
